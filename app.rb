@@ -1,4 +1,5 @@
 require 'sinatra'
+require './lib/fyber/offer'
 
 set :haml, :format => :html5
 

@@ -14,5 +14,3 @@ RSpec.configure do |config|
 end
 
 Capybara.app = Sinatra::Application
-
-WebMock.allow_net_connect!

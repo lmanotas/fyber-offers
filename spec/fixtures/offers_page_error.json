@@ -1,0 +1,13 @@
+{
+ "code": " ERROR_INVALID_PAGE" ,
+ "message": "A non-existing page was requested with the parameter page.",
+ "count": 1,
+ "pages": 1,
+ "information" : {
+  "app_name": "SP Test App" ,
+  "appid": 157,
+  "virtual_currency": "Coins",
+  "country": " US" ,
+  "language": " EN" ,
+  "support_url": "http://iframe.fyber.com/mobile/DE/157/my_offers"
+ }

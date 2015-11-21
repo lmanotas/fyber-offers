@@ -12,7 +12,7 @@ describe Fyber::Offer do
     it do
       lambda{
         get
-        expect(a_request(:get, /#{Fyber::Offer.URL_API}/)).to have_been_made
+        expect(a_request(:get, /#{Fyber::Offer.API_URL}/)).to have_been_made
       }
     end
 

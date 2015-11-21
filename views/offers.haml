@@ -8,7 +8,7 @@
     - @offers.each do |offer|
       %tr
         %td= offer["title"]
-        %td= offer["title"]
+        %td= offer["thumbnail"]["lowres"]
         %td= offer["payout"]
 - else
   %p No offers available

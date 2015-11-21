@@ -1,0 +1,11 @@
+%a{href: '/'} Back
+%table
+  %tr
+    %th Title
+    %th Lowres
+    %th Payout
+  - @offers.each do |offer|
+    %tr
+      %td= offer["title"]
+      %td= offer["title"]
+      %td= offer["payout"]

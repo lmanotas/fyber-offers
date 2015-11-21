@@ -1,15 +1,9 @@
 require 'spec_helper'
 
 describe Fyber::Offer do
-  let(:valid_response){ (File.read(File.join(Sinatra::Application.root, 'spec', 'fixtures', 'offers.json'))) }
-  let(:api_url){ Fyber::Offer::API_URL }
-
   describe 'get offers' do
+    valid_offers_response
     subject{ Fyber::Offer.get() }
-
-    before do
-      stub_request(:get, api_url).to_return(body: valid_response)
-    end
 
     it do
       subject
@@ -22,10 +16,9 @@ describe Fyber::Offer do
   end
 
   describe 'get error from offers endpoint' do
-    let(:error_response){ (File.read(File.join(Sinatra::Application.root, 'spec', 'fixtures', 'offers_page_error.json'))) }
-    let(:error_message){ error_response["message"] }
+    offers_response_with_error
+    
     it do
-      stub_request(:get, api_url).to_return(body: error_response, status: 400)
       expect{ Fyber::Offer.get() }.to raise_error(Fyber::OfferRequestError, error_message)
     end
   end

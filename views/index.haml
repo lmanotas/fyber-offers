@@ -1,1 +1,14 @@
 %h1 Offers
+.form-container
+  %form{action: '/', method: 'POST'}
+    .field
+      %label{for: 'uid'} UID
+      %input{type: 'text', name: 'uid', id: 'uid'}
+    .field
+      %label{for: 'pub0'} PUB0
+      %input{type: 'text', name: 'pub0', id: 'pub0'}
+    .field
+      %label{for: 'page'} Page
+      %input{type: 'text', name: 'page', id: 'page'}
+    .field
+      %input{type: 'submit', value: 'Get Offers'}

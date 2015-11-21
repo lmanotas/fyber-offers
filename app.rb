@@ -8,6 +8,17 @@ get '/' do
   haml :index
 end
 
+post '/' do
+  begin
+    @offers = Fyber::Offer.get
+    haml :offers
+  rescue Fyber::OfferRequestError => e
+    @error = e.message
+    haml :error_page
+  end
+end
+
 not_found do
-  "Page Not Found"
+  @error = "Page Not Found"
+  haml :error_page
 end

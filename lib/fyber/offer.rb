@@ -2,6 +2,7 @@ require 'json'
 require 'uri'
 require 'digest'
 require 'net/http'
+require 'yaml'
 
 module Fyber
   class OfferRequestError < StandardError;end
@@ -10,22 +11,16 @@ module Fyber
 
     API_URL     = 'http://api.sponsorpay.com/feed/v1/offers.json'
 
-    API_KEY = 'b07a12df7d52e6c118e5d47d3f9e60135b109a1f'
+    def self.load!(config)
+      @config ||= config
+    end
 
-    PARAMS      = {
-      uid:         '',
-      pub0:        '',
-      pages:       1,
-      appid:       '157',
-      device_id:   '2b6f0cc904d137be2e1730235f5664094b83',
-      ip:          '109.235.143.113',
-      locale:      'de',
-      offer_types: '112',
-      timestamp:   nil
-    }
+    def config
+      self.class.instance_variable_get(:@config)
+    end
 
     def initialize(params = {})
-      @params = PARAMS.merge(params)
+      @params = config[:default_params].merge(params)
     end
 
     def get
@@ -43,7 +38,7 @@ module Fyber
         sorted_params = @params.sort.to_h
         s_params      = stringify_params( sorted_params )
 
-        return Digest::SHA1.hexdigest "#{s_params}&#{API_KEY}"
+        return Digest::SHA1.hexdigest "#{s_params}&#{config[:api_key]}"
       end
 
       def process_response
@@ -56,7 +51,7 @@ module Fyber
       end
 
       def check_response_signature!
-        resp_signature = Digest::SHA1.hexdigest("#{@response.body}#{API_KEY}")
+        resp_signature = Digest::SHA1.hexdigest("#{@response.body}#{config[:api_key]}")
         raise Fyber::FakeOfferResponse.new('Its a Fake Response!') unless resp_signature == @response.header["X-Sponsorpay-Response-Signature"]
       end
 

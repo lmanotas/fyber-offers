@@ -2,6 +2,33 @@
 %html
   %head
     %title Fyber Offers
+    %link{ rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", integrity: "sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==", crossorigin: "anonymous" }
+    :css
+      .container-narrow{
+        text-align: center;
+        width: 700px;
+      }
+      .container-narrow table{
+        text-align: left;
+      }
+      .masthead h3{
+        text-align: left;
+      }
+      .container .main{
+        margin-top: 40px;
+      }
+      .container .main .form-container{
+        margin: 0 auto;
+        width: 400px;
+      }
   %body
-    .wrapper
-      = yield
+    .container.container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          %li
+            %a{ href: "/"} Home
+          %li
+            %a{ href: "https://github.com/lmanotas/fyber-offers"} Source Code
+        %h3.muted Fyber Offers
+      .main
+        = yield

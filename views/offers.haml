@@ -1,14 +1,18 @@
-%a{href: '/'} Back
-- if @offers.any?
-  %table
-    %tr
-      %th Title
-      %th Lowres
-      %th Payout
-    - @offers.each do |offer|
-      %tr
-        %td= offer["title"]
-        %td= offer["thumbnail"]["lowres"]
-        %td= offer["payout"]
-- else
-  %p No offers available
+.panel.panel-default
+  .panel-heading Offers at the moment
+  - if @offers.any?
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Title
+          %th Thumbnail
+          %th Payout
+      %tbody
+        - @offers.each do |offer|
+          %tr
+            %td= offer["title"]
+            %td
+              %img{ src: offer["thumbnail"]["lowres"] }
+            %td= offer["payout"]
+  - else
+    %p No offers available

@@ -1,14 +1,13 @@
-%h1 Offers
 .form-container
   %form{action: '/', method: 'POST'}
-    .field
+    .form-group
       %label{for: 'uid'} UID
-      %input{type: 'text', name: 'uid', id: 'uid'}
-    .field
+      %input.form-control{type: 'text', name: 'uid', id: 'uid'}
+    .form-group
       %label{for: 'pub0'} PUB0
-      %input{type: 'text', name: 'pub0', id: 'pub0'}
-    .field
+      %input.form-control{type: 'text', name: 'pub0', id: 'pub0'}
+    .form-group
       %label{for: 'page'} Page
-      %input{type: 'text', name: 'page', id: 'page'}
-    .field
-      %input{type: 'submit', value: 'Get Offers'}
+      %input.form-control{type: 'text', name: 'page', id: 'page'}
+    .form-group
+      %input.btn.btn-primary{type: 'submit', value: 'Get Offers'}

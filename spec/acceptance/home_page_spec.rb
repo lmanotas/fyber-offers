@@ -55,4 +55,15 @@ describe 'app', type: :acceptance do
       expect(page).to have_content('No offers available')
     end
   end
+
+  describe 'fake response message' do
+    fake_offers_response
+
+    it 'show fake response error message' do
+      visit '/'
+      fill_get_offer_form
+
+      expect(page).to have_content('Its a Fake Response!')
+    end
+  end
 end

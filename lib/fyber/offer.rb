@@ -5,6 +5,7 @@ require 'net/http'
 
 module Fyber
   class OfferRequestError < StandardError;end
+  class FakeOfferResponse < StandardError;end
   class Offer
 
     API_URL     = 'http://api.sponsorpay.com/feed/v1/offers.json'
@@ -47,10 +48,16 @@ module Fyber
 
       def process_response
         if @response.is_a?(Net::HTTPSuccess)
+          check_response_signature!
           JSON.parse(@response.body)["offers"]
         else
           raise_response_error
         end
+      end
+
+      def check_response_signature!
+        resp_signature = Digest::SHA1.hexdigest("#{@response.body}#{API_KEY}")
+        raise Fyber::FakeOfferResponse.new('Its a Fake Response!') unless resp_signature == @response.header["X-Sponsorpay-Response-Signature"]
       end
 
       def raise_response_error

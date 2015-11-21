@@ -41,7 +41,7 @@ describe 'app', type: :acceptance do
       visit '/'
       fill_get_offer_form
 
-      expect(page).to have_content(error_message)
+      expect(page).to have_content("A non-existing page was requested with the parameter page.")
     end
   end
 

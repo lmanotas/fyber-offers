@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 gem 'sinatra'
+gem 'json'
+gem 'digest'
 gem 'haml'
 
 group :test do

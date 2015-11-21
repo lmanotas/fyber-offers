@@ -10,7 +10,7 @@ end
 
 post '/' do
   begin
-    @offers = Fyber::Offer.get
+    @offers = Fyber::Offer.new({uid: params[:uid], page: params[:page], pub0: params[:pub0]}).get
     haml :offers
   rescue Fyber::OfferRequestError => e
     @error = e.message

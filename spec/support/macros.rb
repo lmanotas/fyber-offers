@@ -8,6 +8,15 @@ module Macros
     end
   end
 
+  def no_offers_response
+    preparing_api_url
+    let(:no_offers_body){ (File.read(File.join(Sinatra::Application.root, 'spec', 'fixtures', 'no_offers.json'))) }
+
+    before do
+      stub_request(:get, api_url).to_return(body: no_offers_body)
+    end
+  end
+
   def offers_response_with_error
     preparing_api_url
     let(:error_response){ (File.read(File.join(Sinatra::Application.root, 'spec', 'fixtures', 'offers_page_error.json'))) }

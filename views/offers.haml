@@ -1,11 +1,14 @@
 %a{href: '/'} Back
-%table
-  %tr
-    %th Title
-    %th Lowres
-    %th Payout
-  - @offers.each do |offer|
+- if @offers.any?
+  %table
     %tr
-      %td= offer["title"]
-      %td= offer["title"]
-      %td= offer["payout"]
+      %th Title
+      %th Lowres
+      %th Payout
+    - @offers.each do |offer|
+      %tr
+        %td= offer["title"]
+        %td= offer["title"]
+        %td= offer["payout"]
+- else
+  %p No offers available

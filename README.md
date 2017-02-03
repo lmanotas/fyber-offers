@@ -1,4 +1,4 @@
-# Fyber Offers
+# Offers
 A minimalist Ruby web application using Sinatra framework.
 * Request to Fyber Offers API are done by `Fyber::Offer` library class. see `lib/fyber/offer.rb`
 * Simple Sinatra Application with 2 endpoints, (get '/' and post '/'). see `app.rb`
